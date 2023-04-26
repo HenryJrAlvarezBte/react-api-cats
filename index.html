@@ -13,7 +13,9 @@
     <img src="./public/cat-say.png" alt="gatitos-random" id="image">
     
     <button type="button" id="button1">Gato dice</button>
-    <input type="text" id="name">
+    <input type="text" placeholder="  Escribe tu frase aqui." id="name">
+    <button onclick="document.getElementById('myAudio').play()">🔊</button>
+    <audio id="myAudio" src="./public/maullido.mp3"></audio>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
