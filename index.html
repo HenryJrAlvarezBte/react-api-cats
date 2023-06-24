@@ -1,21 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/index.css">
     <title>App Gatos</title>
   </head>
   <body>
     <div id="root"></div>
     <h1><u>App Gatos con Frase</u></h1>
 
-    <img src="./public/cat-say.png" alt="gatitos-random" id="image">
+    <img src="./public/cat-say.png" alt="server-api-caido" id="image">
     
-    <button type="button" id="button1">Gato dice</button>
-    <input type="text" placeholder="  Escribe tu frase aqui." id="name">
-    <button onclick="document.getElementById('myAudio').play()">🔊</button>
-    <audio id="myAudio" src="./public/maullido.mp3"></audio>
-    <script type="module" src="/src/main.jsx"></script>
+    <button type="button" id="button1" disabled>Gato dice</button>
+    <input type="text" placeholder="Escribe tu frase aquí." id="name" required>
+    <button onclick="playRandomSound()">🔊</button>
+    <br><br><button onclick="downloadImage()">Descargar</button>
+    <audio id="myAudio"></audio>
+    
+    <script type="module" src="./src/main.jsx"></script>
+    <script>
+      function playRandomSound() {
+        const sounds = [
+          "./public/maullido.mp3",
+          "./public/gatito-maullido.mp3",
+          "./public/raul-maullido.mp3"
+        ];
+        const randomIndex = Math.floor(Math.random() * sounds.length);
+        const audio = document.getElementById("myAudio");
+        audio.src = sounds[randomIndex];
+        audio.play();
+      }
+      
+      document.getElementById("name").addEventListener("input", function() {
+        const button = document.getElementById("button1");
+        button.disabled = this.value.length === 0;
+      });
+    </script>
   </body>
 </html>
