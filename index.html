@@ -13,25 +13,35 @@
 
     <img src="./public/cat-say.png" alt="server-api-caido" id="image">
     
-    <button type="button" id="button1" disabled>Gato dice</button>
-    <input type="text" placeholder="Escribe tu frase aquí." id="name" required>
-    <button onclick="playRandomSound()">🔊</button>
-    <br><br><button onclick="downloadImage()">Descargar</button>
-    <audio id="myAudio"></audio>
+    <button type="button" id="button1" disabled>Gato dice:</button>
+    <input type="text" placeholder="Escribe tu frase aquí y aprieta Gato dice." id="name" required>
+    <button id="playButton">🔊</button>
+    <audio id="audio1" src="./public/maullido.mp3"></audio>
+    <audio id="audio2" src="./public/gatito-maullido.mp3"></audio>
+    <audio id="audio3" src="./public/raul-maullido.mp3"></audio>
     
     <script type="module" src="./src/main.jsx"></script>
     <script>
-      function playRandomSound() {
-        const sounds = [
-          "./public/maullido.mp3",
-          "./public/gatito-maullido.mp3",
-          "./public/raul-maullido.mp3"
-        ];
-        const randomIndex = Math.floor(Math.random() * sounds.length);
-        const audio = document.getElementById("myAudio");
-        audio.src = sounds[randomIndex];
-        audio.play();
-      }
+      const playButton = document.getElementById("playButton");
+      const audios = [
+        document.getElementById("audio1"),
+        document.getElementById("audio2"),
+        document.getElementById("audio3")
+      ];
+      
+      playButton.addEventListener("click", function() {
+        const randomIndex = Math.floor(Math.random() * audios.length);
+        const audio = audios[randomIndex];
+        
+        if (audio.paused) {
+          audio.play().catch(() => {
+            audio.play();
+          });
+        } else {
+          audio.pause();
+          audio.currentTime = 0;
+        }
+      });
       
       document.getElementById("name").addEventListener("input", function() {
         const button = document.getElementById("button1");
