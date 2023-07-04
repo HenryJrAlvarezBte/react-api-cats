@@ -25,16 +25,6 @@ async function fetchCatPhrase() {
 
 fetchCatPhrase();
 
-function downloadImage() {
-  const imageSrc = document.getElementById("image").src;
-  const link = document.createElement("a");
-  link.href = imageSrc;
-  link.download = "gato_con_frase.png"; // Nombre del archivo de descarga
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
