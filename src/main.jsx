@@ -5,16 +5,17 @@ import './index.css';
 
 const button = document.getElementById("button1");
 
-button.addEventListener("click", function(){
-  if(document.getElementById("name")){    
-    let cat = document.getElementById("name").value;
-    const image = document.getElementById("image").src = "https://cataas.com/cat/says/" + cat;    
+button.addEventListener("click", async function() {
+  if (document.getElementById("name")) {    
+    const cat = document.getElementById("name").value;
+    const image = document.getElementById("image");
+    image.src = `https://cataas.com/cat/says/${cat}`;
   }
-})
+});
 
 async function fetchCatPhrase() {
   try {
-    const response = await fetch('https://cataas.com/#/');
+    const response = await fetch('https://cataas.com/c');
     const data = await response.json();
     const catPhrase = data.phrase;
     document.getElementById("name").value = catPhrase;
