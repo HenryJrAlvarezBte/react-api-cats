@@ -80,3 +80,11 @@ input {
     background-color: #f9f9f9;
   }
 }
+
+* {
+  position: 50%;
+}
+
+img {
+  position: 0px;
+}
