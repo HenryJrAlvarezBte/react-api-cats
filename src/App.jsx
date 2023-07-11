@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 
+import catImage from './cat-say.png'; // Importa la imagen del gatito
+
 function App() {
   const [showImage, setShowImage] = useState(false);
 
@@ -34,9 +36,9 @@ function App() {
       <h1><u>App Gatos con Frase</u></h1>
 
       {showImage ? (
-        <img src="./public/cat-say.png" alt="" id="image" />
+        <img src={catImage} alt="" id="image" /> // Usa la imagen importada
       ) : (
-        <img src="./public/cat-say.png" alt="server-api-caido" id="image" />
+        <img src={catImage} alt="server-api-caido" id="image" /> // Usa la imagen importada
       )}
 
       <button type="button" id="button1" onClick={handleClick}>Gato dice:</button>
