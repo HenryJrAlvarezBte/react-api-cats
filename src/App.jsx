@@ -21,9 +21,9 @@ function App() {
       <h1><u>App Gatos con Frase</u></h1>
 
       {showImage ? (
-        <img src="./public/cat-say.png" alt="" id="image" />
+        <img src="../public/cat-say.png" alt="" id="image" />
       ) : (
-        <img src="./public/cat-say.png" alt="server-api-caido" id="image" />
+        <img src="../public/cat-say.png" alt="" id="image" />
       )}
 
       <button type="button" id="button1" onClick={handleClick}>Gato dice:</button>
