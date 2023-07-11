@@ -16,19 +16,6 @@ function App() {
     }
   };
 
-  async function fetchCatPhrase() {
-    try {
-      const response = await fetch('https://cataas.com/c');
-      const data = await response.json();
-      const catPhrase = data.phrase;
-      document.getElementById("name").value = catPhrase;
-    } catch (error) {
-      console.error('Error al obtener la frase del gato:', error);
-    }
-  }
-
-  fetchCatPhrase();
-
   return (
     <>
       <h1><u>App Gatos con Frase</u></h1>
