@@ -1,18 +1,13 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 
 function App() {
-  const [showImage, setShowImage] = useState(false);
+  const [cat, setCat] = useState('HOLAAA');
 
-  const handleClick = async () => {
+  const handleClick = () => {
     const input = document.getElementById("name");
     if (input.value !== '') {
-      const cat = input.value;
-      const image = document.getElementById("image");
-      image.src = `https://cataas.com/cat/says/${cat}`;
-      setShowImage(true);
-    } else {
-      setShowImage(false);
+      setCat(input.value);
     }
   };
 
@@ -20,16 +15,12 @@ function App() {
     <>
       <h1><u>App Gatos con Frase</u></h1>
 
-      {showImage ? (
-        <img src="../public/cat-say.png" alt="" id="image" />
-      ) : (
-        <img src="../public/cat-say.png" alt="" id="image" />
-      )}
+      <img src={`https://cataas.com/cat/says/${cat}`} alt="El server de la API esta caido, vuelva en unas horas, gracias!" id="image" />
 
       <button type="button" id="button1" onClick={handleClick}>Gato dice:</button>
       <input type="text" placeholder="Escribe tu frase aquí y aprieta Gato dice." id="name" required />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
